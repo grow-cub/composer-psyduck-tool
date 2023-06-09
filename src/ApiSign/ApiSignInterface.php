@@ -77,7 +77,8 @@ class ApiSignInterface
      * @param $data
      * @return string
      */
-    public static function makeSign($data){
+    public static function makeSign($data): string
+    {
         // 对数组的值按key排序
         ksort($data);
         // 生成url的形式
