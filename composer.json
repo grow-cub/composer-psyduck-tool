@@ -11,5 +11,8 @@
             "email": "1057523194@qq.com"
         }
     ],
-    "require": {}
+    "require": {
+      "ext-json": "*",
+      "ext-zlib": "*"
+    }
 }
