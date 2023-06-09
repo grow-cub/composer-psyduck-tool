@@ -3,6 +3,6 @@
 
 require_once "../vendor/autoload.php";
 
-use Psyduck\Str\StrInterface;
+use Psyduck\OrderSn\OrderSnInterface;
 
-echo StrInterface::trimStrPhone('13799324942');
+echo OrderSnInterface::getSn('13799324942');
