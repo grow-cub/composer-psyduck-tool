@@ -3,6 +3,6 @@
 
 require_once "../vendor/autoload.php";
 
-use Psyduck\OrderSn\OrderSnInterface;
+use Psyduck\OrderNo\OrderNoInterface;
 
-echo OrderSnInterface::getSn('13799324942');
+echo OrderNoInterface::getOrderNo();
