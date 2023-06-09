@@ -1,0 +1,15 @@
+{
+    "name": "psyduck/tool",
+    "autoload": {
+        "psr-4": {
+            "Psyduck\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ta",
+            "email": "1057523194@qq.com"
+        }
+    ],
+    "require": {}
+}
