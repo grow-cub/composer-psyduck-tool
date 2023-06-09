@@ -13,6 +13,7 @@
     ],
     "require": {
       "ext-json": "*",
-      "ext-zlib": "*"
+      "ext-zlib": "*",
+      "ext-openssl": "*"
     }
 }

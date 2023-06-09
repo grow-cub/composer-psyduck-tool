@@ -3,16 +3,6 @@
 
 require_once "../vendor/autoload.php";
 
-use Psyduck\ApiSign\ApiSignInterface;
+use Psyduck\Rsa\RsaInterface;
 
-$data = array(
-    'username' => 'abc@qq.com',
-    'sex' => '1',
-    'age' => '16',
-    'addr' => 'guangzhou',
-    'key' => '123',
-    'timestamp' => time(),
-);
-//echo ApiSignInterface::getSign($data);
-
-echo ApiSignInterface::verifySign($data);
+echo RsaInterface::privateEncrypt(json_encode(array('1'=> 2)));
