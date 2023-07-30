@@ -3,6 +3,12 @@
 
 require_once "../vendor/autoload.php";
 
-use Psyduck\Rsa\RsaInterface;
+use Psyduck\Response\ResponseInterface;
 
-echo RsaInterface::privateEncrypt(json_encode(array('1'=> 2)));
+
+$data = array();
+$data['user_name'] = '1';
+$data['user_age'] = '18';
+$data['user_school'] = '美团';
+
+var_dump(ResponseInterface::success($data));
