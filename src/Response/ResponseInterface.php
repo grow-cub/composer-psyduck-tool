@@ -2,6 +2,7 @@
 
 namespace Psyduck\Response;
 use Psyduck\Hump\HumpInterface;
+use Psyduck\Pako\PakoInterface;
 
 class ResponseInterface
 {
@@ -48,6 +49,7 @@ class ResponseInterface
             $obj['data'] = $data;
             $obj = HumpInterface::ergodicArraySnakeToHump($obj);
         }
-        echo json_encode($obj);die;
+        // 返回前端加密
+        echo PakoInterface::encrypt(json_encode($obj));die;
     }
 }

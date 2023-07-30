@@ -13,7 +13,7 @@
 </html>
 
 <!--pako/dist/pako.js-->
-<script src="./pako.js"></script>
+<script src="pako.js"></script>
 <script>
     //todo pako
     /**
@@ -38,13 +38,17 @@
     }
 
     //后端返回待解密数据集
-    const str = 'FYxBDsIwDAS/EvlMqxBx6omvWKlJIoJNm+VCxd9xpT3tzs5BaOhCC6G2ETxvftq8yoM7JEAG6EL8QbXdodFNy7eylvu2zdlePq6M859iuk7xNsXkXTaFKE6tG4LkamFgb1ro9wc=';
+    const str = 'U6qOUUrOT0mNUbIyMjDQiVHKLU4HsmOUikuTk1OLi2OUgGIpiSWJQEGg0tLi1CK/xNxUsBJDsCRIyDEdKmIBFwpOzsjPzwGLxsSUmqdZpAIpU7NUoxil2lolAA==';
     const decompress = function (str) {
         return pako.inflateRaw(base64ToUint8Array(str), {to: 'string'});
     };
     function de_pako(){
         var rawData = decompress(str);
-        console.log(rawData);
+        console.log(JSON.parse(strToJson(rawData))['data']);
+    }
+    // 字符串转json
+    function strToJson(str){
+        return  eval('(' + str + ')');
     }
 
     /**
