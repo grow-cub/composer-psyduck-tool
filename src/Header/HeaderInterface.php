@@ -41,4 +41,25 @@ class HeaderInterface
         //输出获取到的header
         return $headers;
     }
+
+    /**
+     * @Author 可达鸭
+     * @Description 检测是否是允许访问的来源网站
+     * @Date 2023/7/9 19:49:20
+     * @param array $allowRefArray
+     * @return void
+     */
+    public static function dealAllowReferer(array $allowRefArray = array())
+    {
+        if(empty($allowRefArray)){
+            return;
+        }
+        $headerData = self::getHeader();
+        if(empty($headerData['referer'])){
+            return;
+        }
+        if(!in_array($headerData['referer'],$allowRefArray)){
+            return;
+        }
+    }
 }
