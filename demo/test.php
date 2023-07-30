@@ -10,7 +10,7 @@ use Psyduck\Response\ResponseInterface;
 // $data = array();
 // $data['user_name'] = '1';
 // $data['user_age'] = '18';
-// $data['user_school'] = '美团';
+// $data['user_school'] = '美团';1111
 
 // var_dump(ResponseInterface::success($data));
 
@@ -28,4 +28,3 @@ use Psyduck\Header\HeaderInterface;
 
 $array = [1,1,2];
 HeaderInterface::dealAllowReferer($array);
-
