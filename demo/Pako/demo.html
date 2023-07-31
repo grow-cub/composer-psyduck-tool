@@ -38,17 +38,13 @@
     }
 
     //后端返回待解密数据集
-    const str = 'U6qOUUrOT0mNUbIyMjDQiVHKLU4HsmOUikuTk1OLi2OUgGIpiSWJQEGg0tLi1CK/xNxUsBJDsCRIyDEdKmIBFwpOzsjPzwGLxsSUmqdZpAIpU7NUoxil2lolAA==';
+    const str = 'q1ZKzk9JVbIyMjDQUcotTleyUiouTU5OLS5W0lFKSSxJVLKqViotTi3yS8wFKlMyBAqDuI7pYJ4FlBucnJGfnwMUeb6v7+nsRUq1tQA=';
     const decompress = function (str) {
         return pako.inflateRaw(base64ToUint8Array(str), {to: 'string'});
     };
     function de_pako(){
         var rawData = decompress(str);
-        console.log(JSON.parse(strToJson(rawData))['data']);
-    }
-    // 字符串转json
-    function strToJson(str){
-        return  eval('(' + str + ')');
+        console.log(JSON.parse(rawData));return;
     }
 
     /**
