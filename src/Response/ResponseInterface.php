@@ -2,7 +2,7 @@
 
 namespace Psyduck\Response;
 
-use Psyduck\DefConstant\DefConstantInterface;
+use Psyduck\DefVariable\DefVariableInterface;
 use Psyduck\Hump\HumpInterface;
 use Psyduck\Pako\PakoInterface;
 
@@ -17,7 +17,7 @@ class ResponseInterface
      */
     public static function success($data = null)
     {
-        return self::response(200, "success", $data);
+        return self::response(0, "success", $data);
     }
 
     /**
@@ -33,13 +33,10 @@ class ResponseInterface
     }
 
     /**
-     * @Author 
-     * @Description
-     * @Date 2023/6/7 22:14:46
      * @param int $code
      * @param string $msg
      * @param $data
-     * @return void
+     * @return array|string|void
      */
     public static function response(int $code = 0, string $msg = '', $data = null)
     {
@@ -50,32 +47,19 @@ class ResponseInterface
         if (!is_null($data)) {
             $obj['data'] = $data;
             // 是否以中间件的形式去加载SnakeToHump true加载 false不加载
-            if(!DefConstantInterface::SnakeToHumpMiddleware){
+            if(!DefVariableInterface::$snakeToHumpMiddleware){
                 $obj = HumpInterface::ergodicArraySnakeToHump($obj);
             }
         }
         // 是否开启加密返回
-        if(DefConstantInterface::defReturnEncrypt){
+        if(DefVariableInterface::$defReturnEncrypt){
             $obj = PakoInterface::encrypt($obj);
         }
-        self::frameType($obj);
-    }
-
-    /**
-     * 判断是什么类型的框架
-     * @param $obj
-     * @return void
-     */
-    public static function frameType($obj)
-    {
-        switch (DefConstantInterface::frameType){
-            case 'laravel':
-                return $obj;
-            break;
-            default:
-                echo json_encode($obj);
-                exit;
-            break;
+        // 是否开启默认json返回
+        if(!DefVariableInterface::$deReturnJson){
+            return $obj;
         }
+        echo json_encode($obj);
+        exit;
     }
 }

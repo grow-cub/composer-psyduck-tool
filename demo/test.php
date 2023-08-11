@@ -4,6 +4,7 @@
 require_once "../vendor/autoload.php";
 
 
+use Psyduck\DefVariable\DefVariableInterface;
 use Psyduck\Response\ResponseInterface;
 
 
@@ -12,7 +13,9 @@ use Psyduck\Response\ResponseInterface;
  $data['user_age'] = '18';
  $data['user_school'] = '美团';
 
- var_dump(ResponseInterface::success($data));
+//DefVariableInterface::snakeToHumpMiddleware(true);
+//var_dump(DefVariableInterface::$snakeToHumpMiddleware);
+var_dump(ResponseInterface::success($data));
 
 //use Psyduck\Jwt\JwtInterface;
 //
