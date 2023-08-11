@@ -5,7 +5,7 @@ namespace Psyduck\Header;
 class HeaderInterface
 {
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description 获取headre头部数据
      * @Date 2023/6/9 16:23:42
      * @return array
@@ -43,7 +43,7 @@ class HeaderInterface
     }
 
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description 检测是否是允许访问的来源网站
      * @Date 2023/7/9 19:49:20
      * @param array $allowRefArray

@@ -5,7 +5,7 @@ namespace Psyduck\Time;
 class TimeInterface
 {
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description 格式化时间戳
      * @Date 2022/9/19 22:32:58
      * @param $timestamp
@@ -17,7 +17,7 @@ class TimeInterface
     }
 
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description 获取时间戳
      * @Date 2022/9/19 22:29:56
      * @return int
@@ -28,7 +28,7 @@ class TimeInterface
     }
 
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description 获取毫秒级时间戳
      * @Date 2022/9/19 22:39:02
      * @return float

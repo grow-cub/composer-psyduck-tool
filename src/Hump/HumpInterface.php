@@ -5,7 +5,7 @@ namespace Psyduck\Hump;
 class HumpInterface
 {
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description 遍历数组 小驼峰转蛇形
      * @Date 2023/6/7 22:11:40
      * @param $arr
@@ -25,7 +25,7 @@ class HumpInterface
     }
 
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description 小驼峰转蛇形
      * @Date 2023/6/7 22:12:14
      * @param $str
@@ -37,7 +37,7 @@ class HumpInterface
     }
 
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description 遍历数组 蛇形转小驼峰
      * @Date 2023/6/7 22:12:35
      * @param $arr
@@ -57,7 +57,7 @@ class HumpInterface
     }
 
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description 蛇形转小驼峰
      * @Date 2023/6/7 22:12:55
      * @param $str

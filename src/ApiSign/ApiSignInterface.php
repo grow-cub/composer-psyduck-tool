@@ -20,7 +20,7 @@ class ApiSignInterface
     }
 
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description
      * $data = array(
         'username' => 'abc@qq.com',
@@ -44,7 +44,7 @@ class ApiSignInterface
     }
 
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description
      * @Date 2023/6/9 18:08:08
      * @param $data
@@ -71,7 +71,7 @@ class ApiSignInterface
     }
 
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description
      * @Date 2023/6/9 18:13:10
      * @param $data

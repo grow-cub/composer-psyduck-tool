@@ -5,7 +5,7 @@ namespace Psyduck\Money;
 class MoneyInterface
 {
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description 元转分
      * @Date 2023/6/9 16:18:24
      * @param $price
@@ -17,7 +17,7 @@ class MoneyInterface
     }
 
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description 分转元
      * @Date 2023/6/9 16:18:41
      * @param $money

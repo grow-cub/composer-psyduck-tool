@@ -5,7 +5,7 @@ namespace Psyduck\OrderNo;
 class OrderNoInterface
 {
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description 生成订单号
      * @Date 2023/6/9 17:44:11
      * @return string

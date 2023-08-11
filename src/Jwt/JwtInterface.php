@@ -121,7 +121,7 @@ class JwtInterface
     }
 
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description 构建payload数据体
      * @Date 2023/6/9 21:53:50
      * @param $sub
@@ -140,7 +140,7 @@ class JwtInterface
     }
 
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description 刷新token
      * @Date 2023/6/9 23:08:19
      * @param $sub

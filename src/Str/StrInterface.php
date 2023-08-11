@@ -5,7 +5,7 @@ namespace Psyduck\Str;
 class StrInterface
 {
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description 手机号隐藏中间四位
      * @Date 2022/9/3 19:49:00
      * @param $strPhone
@@ -17,7 +17,7 @@ class StrInterface
     }
 
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description
      * @Date 2022/9/3 19:51:22
      * @param $data

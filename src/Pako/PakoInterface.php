@@ -5,7 +5,7 @@ namespace Psyduck\Pako;
 class PakoInterface
 {
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description 后端PHP压缩+前端JS解压
      * $array = array(
         "title"       => "this is pako.defalte test",
@@ -27,7 +27,7 @@ class PakoInterface
      * @return false|string
      */
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description 前端JS压缩+后端PHP解压
      * $base64String = 'PYw7DoMwEESvYm0dLMei
      * ospVVrDBFo4X8KQJ4u5ZGqTRFPN5

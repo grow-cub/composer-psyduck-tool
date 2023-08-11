@@ -9,7 +9,7 @@ use Psyduck\Pako\PakoInterface;
 class ResponseInterface
 {
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description 成功响应
      * @Date 2023/6/7 22:09:35
      * @param $data
@@ -33,7 +33,7 @@ class ResponseInterface
     }
 
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description
      * @Date 2023/6/7 22:14:46
      * @param int $code

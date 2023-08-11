@@ -6,7 +6,7 @@ class FileInterface
 {
 
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description 获取文件信息
      * @Date 2023/6/7 21:55:30
      * @param $file
@@ -24,7 +24,7 @@ class FileInterface
     }
 
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description 获取具体的文件大小
      * @Date 2023/6/7 21:55:02
      * @param $size

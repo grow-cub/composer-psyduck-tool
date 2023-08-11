@@ -5,7 +5,7 @@ namespace Psyduck\Ip;
 class IpInterface
 {
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description 获取客户端ip
      * @Date 2023/6/9 16:25:14
      * @return mixed|string
@@ -26,7 +26,7 @@ class IpInterface
     }
 
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description ip转int
      * @Date 2023/6/9 16:25:26
      * @param $ip
@@ -38,7 +38,7 @@ class IpInterface
     }
 
     /**
-     * @Author 可达鸭
+     * @Author 
      * @Description ip int转string
      * @Date 2023/6/9 16:25:43
      * @param $ip
