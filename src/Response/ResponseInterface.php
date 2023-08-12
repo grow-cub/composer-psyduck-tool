@@ -48,7 +48,8 @@ class ResponseInterface
             $obj['data'] = $data;
             $obj = self::snakeToHump($obj);
         }
-        return self::defReturnEncrypt($obj);
+        $obj = self::defReturnEncrypt($obj);
+        return self::responseJson($obj);
     }
 
     /**
@@ -80,11 +81,14 @@ class ResponseInterface
     /**
      * 根据框架需要是否默认原生json返回,可用框架自带json返回
      * @param $obj
-     * @return void
+     * @return mixed|void
      */
     public static function responseJson($obj)
     {
-        echo json_encode($obj);
-        exit;
+        if(DefVariableInterface::$deReturnJson){
+            echo json_encode($obj);
+            exit;
+        }
+        return $obj;
     }
 }
