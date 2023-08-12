@@ -48,7 +48,7 @@ class ResponseInterface
             $obj['data'] = $data;
             $obj = self::snakeToHump($obj);
         }
-        $obj = self::defReturnEncrypt($obj);
+        $obj = self::isCiphertext($obj);
         return self::responseJson($obj);
     }
 
@@ -57,9 +57,9 @@ class ResponseInterface
      * @param $obj
      * @return mixed|string
      */
-    public static function defReturnEncrypt($obj)
+    public static function isCiphertext($obj)
     {
-        if(DefVariableInterface::$defReturnEncrypt){
+        if(DefVariableInterface::$isCiphertext){
             $obj = PakoInterface::encrypt($obj);
         }
         return $obj;

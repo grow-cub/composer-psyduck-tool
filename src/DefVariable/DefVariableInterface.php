@@ -5,15 +5,15 @@ namespace Psyduck\DefVariable;
 class DefVariableInterface
 {
     // 定义返回前端是否加密 true 加密 false 不加密
-    public static $defReturnEncrypt;
+    public static $isCiphertext;
 
     /**
      * @param bool $string
      * @return void
      */
-    public static function defReturnEncrypt(bool $string = true)
+    public static function isCiphertext(bool $string = true)
     {
-        self::$defReturnEncrypt = $string ?? false;
+        self::$isCiphertext = $string ?? false;
     }
 
 
