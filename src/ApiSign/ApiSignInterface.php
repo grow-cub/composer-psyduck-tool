@@ -36,6 +36,7 @@ class ApiSignInterface
      */
     public static function getSign($data): string
     {
+        $data['key'] = self::$key;
         $data['timestamp'] = TimeInterface::getTimeStamp();
         return self::makeSign($data);
 
@@ -53,20 +54,20 @@ class ApiSignInterface
     public static function verifySign($data) {
         // 验证参数中是否有签名
         if (!isset($data['sign']) || !$data['sign']) {
-            return ResponseInterface::fail('签名不存在');
+            return ResponseInterface::error('签名不存在');
         }
         if (!isset($data['timestamp']) || !$data['timestamp']) {
-            return ResponseInterface::fail('参数不合法');
+            return ResponseInterface::error('参数不合法');
         }
         // 验证请求,5分钟失效
         if (time() - $data['timestamp'] > 300) {
-            return ResponseInterface::fail('签名已过期');
+            return ResponseInterface::error('签名已过期');
         }
         $sign = $data['sign'];
         unset($data['sign']);
         $sign2 = self::makeSign($data);
         if ($sign != $sign2) {
-            return ResponseInterface::fail('签名校验失败');
+            return ResponseInterface::error('签名校验失败');
         }
     }
 
