@@ -16,6 +16,8 @@ class AesInterface{
 
     private static $cbcIv = '4387438hfdhfdjhg';
     private static  $cbcKey = '235325fdgerteGHdsfsdewred4345341';
+    private static $aesCbc = 'AES-256-CBC';
+
     /**
      * AES-256-CBC 加密
      * @param $data
@@ -23,7 +25,7 @@ class AesInterface{
      */
     public static function encryptCbc($data): string
     {
-        $text = openssl_encrypt($data, 'AES-256-CBC',
+        $text = openssl_encrypt($data, self::$aesCbc,
             self::$cbcKey, OPENSSL_RAW_DATA, self::$cbcIv);
         return base64_encode($text);
     }
@@ -36,11 +38,12 @@ class AesInterface{
     public static function decryptCbc($text): string
     {
         $decodeText = base64_decode($text);
-        return openssl_decrypt($decodeText, 'AES-256-CBC',
+        return openssl_decrypt($decodeText, self::$aesCbc,
             self::$cbcKey, OPENSSL_RAW_DATA, self::$cbcIv);
     }
 
     private static $ecbKey = '235325fdgerteGHdsfsdewred4345341';
+    private static $aesEcb = 'AES-256-ECB';
 
     /**
      * AES-256-ECB 加密
@@ -49,7 +52,7 @@ class AesInterface{
      */
     public static function encryptEcb($data): string
     {
-        $text = openssl_encrypt($data, 'AES-256-ECB', self::$ecbKey, 1);
+        $text = openssl_encrypt($data, self::$aesEcb, self::$ecbKey, 1);
         return base64_encode($text);
     }
 
@@ -61,6 +64,6 @@ class AesInterface{
     public static function decryptEcb($text): string
     {
         $decodeText = base64_decode($text);
-        return openssl_decrypt($decodeText, 'AES-256-ECB', self::$ecbKey, 1);
+        return openssl_decrypt($decodeText, self::$aesEcb, self::$ecbKey, 1);
     }
 }
