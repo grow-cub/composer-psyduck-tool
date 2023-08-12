@@ -66,7 +66,7 @@ class ApiSignInterface
         $sign = $data['sign'];
         unset($data['sign']);
         $sign2 = self::makeSign($data);
-        if ($sign != $sign2) {
+        if(strcmp($sign,$sign2) !== 0){
             return ResponseInterface::error('签名校验失败');
         }
     }
