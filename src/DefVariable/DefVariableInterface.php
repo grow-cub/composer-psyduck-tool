@@ -28,18 +28,4 @@ class DefVariableInterface
     {
         self::$snakeToHumpMiddleware = $string ?? false;
     }
-
-    // 是否开启默认json返回
-    public static $deReturnJson;
-
-    /**
-     * @param bool $string
-     * @return void
-     */
-    public static function deReturnJson(bool $string = false)
-    {
-        self::$deReturnJson = $string ?? false;
-    }
-
-
 }

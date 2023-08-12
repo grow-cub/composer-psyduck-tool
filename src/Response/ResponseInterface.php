@@ -46,19 +46,44 @@ class ResponseInterface
         ];
         if (!is_null($data)) {
             $obj['data'] = $data;
-            // 是否以中间件的形式去加载SnakeToHump true加载 false不加载
-            if(!DefVariableInterface::$snakeToHumpMiddleware){
-                $obj = HumpInterface::ergodicArraySnakeToHump($obj);
-            }
+            $obj = self::snakeToHump($obj);
         }
-        // 是否开启加密返回
+        return self::defReturnEncrypt($obj);
+    }
+
+    /**
+     * 是否开启加密返回
+     * @param $obj
+     * @return mixed|string
+     */
+    public static function defReturnEncrypt($obj)
+    {
         if(DefVariableInterface::$defReturnEncrypt){
             $obj = PakoInterface::encrypt($obj);
         }
-        // 是否开启默认json返回
-        if(!DefVariableInterface::$deReturnJson){
-            return $obj;
+        return $obj;
+    }
+
+    /**
+     * 是否以中间件的形式去加载SnakeToHump true加载 false不加载
+     * @param $obj
+     * @return array|mixed
+     */
+    public static function snakeToHump($obj)
+    {
+        if(!DefVariableInterface::$snakeToHumpMiddleware){
+            $obj = HumpInterface::ergodicArraySnakeToHump($obj);
         }
+        return $obj;
+    }
+
+    /**
+     * 根据框架需要是否默认原生json返回,可用框架自带json返回
+     * @param $obj
+     * @return void
+     */
+    public static function responseJson($obj)
+    {
         echo json_encode($obj);
         exit;
     }
