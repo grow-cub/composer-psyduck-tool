@@ -11,7 +11,7 @@ class MonitorInterface
     public static function onStart($requestData = null){
         $monitor = array();
         // 给请求者分配一个id用来计算时间差
-        $monitor['id'] = 1;
+        $monitor['id'] = self::createUniqueId();
         // 毫秒级时间戳
         $monitor['start_time'] = TimeInterface::getMilliSecond();
         // 获取请求方法
@@ -63,5 +63,34 @@ class MonitorInterface
             'controller' => $controller ?? '',
             'action' => $action ?? ''
         );
+    }
+
+    /**
+     * @param string $uniqueData
+     * @return string
+     */
+    public static function createUniqueId(string $uniqueData = ''): string
+    {
+        static $guid = '';
+        $data = $uniqueData;
+        $uid = uniqid("", true);
+        $data .= $_SERVER['REQUEST_TIME'];
+        $data .= $_SERVER['HTTP_USER_AGENT'];
+        $data .= $_SERVER['LOCAL_ADDR'];
+        $data .= $_SERVER['LOCAL_PORT'];
+        $data .= $_SERVER['REMOTE_ADDR'];
+        $data .= $_SERVER['REMOTE_PORT'];
+        $hash = strtoupper(hash('ripemd128', $uid . $guid . md5($data)));
+        return '{' .
+            substr($hash, 0, 8) .
+            '-' .
+            substr($hash, 8, 4) .
+            '-' .
+            substr($hash, 12, 4) .
+            '-' .
+            substr($hash, 16, 4) .
+            '-' .
+            substr($hash, 20, 12) .
+            '}';
     }
 }

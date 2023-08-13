@@ -9,7 +9,7 @@ use Psyduck\Monitor\MonitorInterface;
 use Psyduck\Response\ResponseInterface;
 
 
-MonitorInterface::onStart();
+MonitorInterface::createGuid();
 
 // $data = array();
 // $data['user_name'] = '1';
