@@ -42,4 +42,14 @@ class StrInterface
 
         return strtr($template, $values);
     }
+
+    /**
+     * 格式话字符串
+     * @param $string
+     * @return string
+     */
+    public static function trimString($string)
+    {
+        return trim($string);
+    }
 }

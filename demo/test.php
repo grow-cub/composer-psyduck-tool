@@ -5,17 +5,20 @@ require_once "../vendor/autoload.php";
 
 
 use Psyduck\DefVariable\DefVariableInterface;
+use Psyduck\Monitor\MonitorInterface;
 use Psyduck\Response\ResponseInterface;
 
 
- $data = array();
- $data['user_name'] = '1';
- $data['user_age'] = '18';
- $data['user_school'] = '美团';
+MonitorInterface::onStart();
+
+// $data = array();
+// $data['user_name'] = '1';
+// $data['user_age'] = '18';
+// $data['user_school'] = '美团';
 
 //DefVariableInterface::snakeToHumpMiddleware(true);
 //var_dump(DefVariableInterface::$snakeToHumpMiddleware);
-var_dump(ResponseInterface::success($data));
+//var_dump(ResponseInterface::success($data));
 
 //use Psyduck\Jwt\JwtInterface;
 //
@@ -29,5 +32,5 @@ var_dump(ResponseInterface::success($data));
 
 use Psyduck\Header\HeaderInterface;
 
-$array = [1,1,2];
-HeaderInterface::dealAllowReferer($array);
+//$array = [1,1,2];
+//HeaderInterface::dealAllowReferer($array);
