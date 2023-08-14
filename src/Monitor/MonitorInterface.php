@@ -2,6 +2,7 @@
 
 namespace Psyduck\Monitor;
 
+use Psyduck\Context\ContextInterface;
 use Psyduck\Ip\IpInterface;
 use Psyduck\Str\StrInterface;
 use Psyduck\Time\TimeInterface;
@@ -9,7 +10,8 @@ use Psyduck\Unique\UniqueInterface;
 
 class MonitorInterface
 {
-    public static function onStart($requestData = null){
+    public static function onStart($requestData = null): array
+    {
         $monitor = array();
         // 给请求者分配一个id用来计算时间差
         $monitor['id'] = UniqueInterface::hybridId();
@@ -34,14 +36,43 @@ class MonitorInterface
 
     /**
      * 请求结束时间
-     * @return array
+     * @param ContextInterface $context
+     * @return void
      */
-    public static function onEnd(): array
+    public static function onEnd(ContextInterface $context)
     {
-        $monitor = array();
         // 毫秒级时间戳
-        $monitor['end_time'] = TimeInterface::getMilliSecond();
-        return $monitor;
+        $context->monitor['end_time'] = TimeInterface::getMilliSecond();
+        $context->monitor['time_diff'] = TimeInterface::timeDiff(
+            $context->monitor['start_time'],$context->monitor['end_time']
+        );
+        $context = self::monitorTimeDiff($context);
+        self::saveContext($context);
+    }
+
+    /**
+     * @param ContextInterface $context
+     * @return ContextInterface
+     */
+    private static function monitorTimeDiff(ContextInterface $context)
+    {
+        $str = '';
+        foreach ($context->monitor['time_diff']  as $K => $v){
+            $str .= $v . ":";
+        }
+        $context->monitor['time_diff'] = rtrim($str,':');
+        return $context;
+    }
+
+
+    /**
+     * @param ContextInterface $context
+     * @return void
+     */
+    public static function saveContext(ContextInterface $context)
+    {
+        var_dump($context);
+        //
     }
 
     /**

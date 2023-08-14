@@ -10,12 +10,15 @@ use Psyduck\Monitor\MonitorInterface;
 use Psyduck\Response\ResponseInterface;
 
 
-var_dump(ContextInterface::getContext());
+ $data = array();
+ $data['user_name'] = '1';
+ $data['user_age'] = '18';
+ $data['user_school'] = '美团';
 
-// $data = array();
-// $data['user_name'] = '1';
-// $data['user_age'] = '18';
-// $data['user_school'] = '美团';
+$context = ContextInterface::getContext();
+ResponseInterface::success($context,$data);
+
+
 
 //DefVariableInterface::snakeToHumpMiddleware(true);
 //var_dump(DefVariableInterface::$snakeToHumpMiddleware);

@@ -10,7 +10,7 @@ class ContextInterface
     /**
      * @var array
      */
-    private $monitor;
+    public $monitor;
 
     private $uid;
 
@@ -23,7 +23,7 @@ class ContextInterface
      * @param $uid
      * @return ContextInterface
      */
-    public static function getContext($uid = null)
+    public static function getContext($uid = null): ContextInterface
     {
         $context = new ContextInterface();
         $requestData = null;

@@ -2,43 +2,46 @@
 
 namespace Psyduck\Response;
 
+use Psyduck\Context\ContextInterface;
 use Psyduck\DefVariable\DefVariableInterface;
 use Psyduck\Hump\HumpInterface;
+use Psyduck\Monitor\MonitorInterface;
 use Psyduck\Pako\PakoInterface;
 
 class ResponseInterface
 {
     /**
-     * @Author 
-     * @Description 成功响应
-     * @Date 2023/6/7 22:09:35
+     * 成功响应
+     * @param ContextInterface $context
      * @param $data
-     * @return void
+     * @return array|string|void
      */
-    public static function success($data = null)
+    public static function success(ContextInterface $context,$data = null)
     {
-        return self::response(0, "success", $data);
+        return self::response($context,0, "success", $data);
     }
 
     /**
      * 错误返回
+     * @param ContextInterface $context
      * @param $errorMsg
-     * @return mixed
+     * @return array|string|void
      */
-    public static function error($errorMsg = null)
+    public static function error(ContextInterface $context,$errorMsg = null)
     {
         $data = array();
         $data['error_msg'] = $errorMsg;
-        return self::response(-1,"error",$data);
+        return self::response($context,-1,"error",$data);
     }
 
     /**
+     * @param ContextInterface $context
      * @param int $code
      * @param string $msg
      * @param $data
-     * @return array|string|void
+     * @return mixed|void
      */
-    public static function response(int $code = 0, string $msg = '', $data = null)
+    public static function response(ContextInterface $context,int $code = 0, string $msg = '', $data = null)
     {
         $obj = [
             'code' => $code,
@@ -49,7 +52,7 @@ class ResponseInterface
             $obj = self::snakeToHump($obj);
         }
         $obj = self::isCiphertext($obj);
-        return self::responseJson($obj);
+        return self::responseJson($context,$obj);
     }
 
     /**
@@ -79,12 +82,13 @@ class ResponseInterface
     }
 
     /**
-     * 根据框架需要是否默认原生json返回,可用框架自带json返回
+     * @param ContextInterface $context
      * @param $obj
      * @return mixed|void
      */
-    public static function responseJson($obj)
+    public static function responseJson(ContextInterface $context,$obj)
     {
+        MonitorInterface::onEnd($context);
         if(DefVariableInterface::$deReturnJson){
             echo json_encode($obj);
             exit;
