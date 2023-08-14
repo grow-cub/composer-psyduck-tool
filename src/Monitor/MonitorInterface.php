@@ -27,6 +27,9 @@ class MonitorInterface
         $monitor['requestUri'] = $_SERVER["REQUEST_URI"];
         // ip
         $monitor['requestIp'] = IpInterface::getClientIp();
+        if($monitor['requestIp']){
+            $monitor['requestIp'] = IpInterface::ipInt($monitor['requestIp']);
+        }
         // 请求数据集
         if($requestData){
             $monitor['requestData'] = json_encode($requestData);
@@ -96,4 +99,19 @@ class MonitorInterface
             'action' => $action ?? ''
         );
     }
+
+//    CREATE TABLE `monitor` (
+//        `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+//        `monitor_uqid` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+//        `start_time` int(11) unsigned NOT NULL DEFAULT '0',
+//        `request_method` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+//        `request_c` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+//        `request_a` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+//        `request_url` text COLLATE utf8_unicode_ci,
+//        `request_ip` int(30) DEFAULT NULL,
+//        `request_data` longtext COLLATE utf8_unicode_ci,
+//        `end_time` int(11) unsigned DEFAULT '0',
+//        `time_diff` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+//        PRIMARY KEY (`id`)
+//    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 }
