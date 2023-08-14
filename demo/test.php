@@ -4,12 +4,13 @@
 require_once "../vendor/autoload.php";
 
 
+use Psyduck\Context\ContextInterface;
 use Psyduck\DefVariable\DefVariableInterface;
 use Psyduck\Monitor\MonitorInterface;
 use Psyduck\Response\ResponseInterface;
 
 
-MonitorInterface::createGuid();
+var_dump(ContextInterface::getContext());
 
 // $data = array();
 // $data['user_name'] = '1';
