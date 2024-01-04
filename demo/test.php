@@ -5,7 +5,7 @@ require_once "../vendor/autoload.php";
 
 
 use Psyduck\Context\ContextInterface;
-use Psyduck\DefVariable\DefVariableInterface;
+use Psyduck\Constant\Constant;
 use Psyduck\Monitor\MonitorInterface;
 use Psyduck\Response\ResponseInterface;
 
@@ -18,11 +18,12 @@ use Psyduck\Response\ResponseInterface;
 $context = ContextInterface::getContext();
 //var_dump($context);die;
 ResponseInterface::success($context,$data);
+//ResponseInterface::success($context,$data);
 
 
 
-//DefVariableInterface::snakeToHumpMiddleware(true);
-//var_dump(DefVariableInterface::$snakeToHumpMiddleware);
+//Constant::snakeToHumpMiddleware(true);
+//var_dump(Constant::$snakeToHumpMiddleware);
 //var_dump(ResponseInterface::success($data));
 
 //use Psyduck\Jwt\JwtInterface;
@@ -35,7 +36,7 @@ ResponseInterface::success($context,$data);
 //$str = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqd3RfYWRtaW4iLCJpYXQiOjE2ODYzMjAwMTEsImV4cCI6MTY4NjMyMDAyMSwibmJmIjoxNjg2MzIwMDcxLCJzdWIiOjEsImp0aSI6ImJmZjkzNjYyYzgwYjIxYTZhNzM2MDEwNmE0NGM2NTNiIn0.g5AteRpm2GMQQ3bCPtbCxo5RBDbtnEB-Z1X5ifD2rTU';
 //var_dump(JwtInterface::verifyToken($str));
 
-use Psyduck\Header\HeaderInterface;
+//use Psyduck\Header\HeaderInterface;
 
 //$array = [1,1,2];
 //HeaderInterface::dealAllowReferer($array);

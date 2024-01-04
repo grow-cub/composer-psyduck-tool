@@ -3,7 +3,7 @@
 namespace Psyduck\Response;
 
 use Psyduck\Context\ContextInterface;
-use Psyduck\DefVariable\DefVariableInterface;
+use Psyduck\Constant\Constant;
 use Psyduck\Hump\HumpInterface;
 use Psyduck\Monitor\MonitorInterface;
 use Psyduck\Pako\PakoInterface;
@@ -39,7 +39,7 @@ class ResponseInterface
      * @param int $code
      * @param string $msg
      * @param $data
-     * @return mixed|void
+     * @return void
      */
     public static function response(ContextInterface $context,int $code = 0, string $msg = '', $data = null)
     {
@@ -49,53 +49,11 @@ class ResponseInterface
         ];
         if (!is_null($data)) {
             $obj['data'] = $data;
-            $obj = self::snakeToHump($obj);
-        }
-        // 保存请求体
-        MonitorInterface::saveContext($context);
-        // 是否开启加密返回
-        $obj = self::isCiphertext($obj);
-        return self::responseJson($context,$obj);
-    }
-
-    /**
-     * 是否开启加密返回
-     * @param $obj
-     * @return mixed|string
-     */
-    public static function isCiphertext($obj)
-    {
-        if(DefVariableInterface::$isCiphertext){
-            $obj = PakoInterface::encrypt($obj);
-        }
-        return $obj;
-    }
-
-    /**
-     * 是否以中间件的形式去加载SnakeToHump true加载 false不加载
-     * @param $obj
-     * @return array|mixed
-     */
-    public static function snakeToHump($obj)
-    {
-        if(!DefVariableInterface::$snakeToHumpMiddleware){
             $obj = HumpInterface::ergodicArraySnakeToHump($obj);
         }
-        return $obj;
-    }
-
-    /**
-     * @param ContextInterface $context
-     * @param $obj
-     * @return mixed|void
-     */
-    public static function responseJson(ContextInterface $context,$obj)
-    {
         MonitorInterface::onEnd($context);
-        if(DefVariableInterface::$deReturnJson){
-            echo json_encode($obj);
-            exit;
-        }
-        return $obj;
+        // 是否开启加密返回
+        echo Constant::$isCiphertext ? PakoInterface::encrypt($obj) : json_encode($obj);
+        exit;
     }
 }
