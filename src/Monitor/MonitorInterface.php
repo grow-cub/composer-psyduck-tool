@@ -54,6 +54,7 @@ class MonitorInterface
     }
 
     /**
+     * 上下文从请求到结束的时间差
      * @param ContextInterface $context
      * @return ContextInterface
      */
@@ -69,11 +70,13 @@ class MonitorInterface
 
 
     /**
+     * 保存请求体并计算从接收到结束的时间差，且异步执行
      * @param ContextInterface $context
-     * @return void
+     * @return bool
      */
-    public static function saveContext(ContextInterface $context)
+    public static function saveContext(ContextInterface $context): bool
     {
+        return true;
         var_dump($context);
         //
     }

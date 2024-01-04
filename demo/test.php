@@ -16,6 +16,7 @@ use Psyduck\Response\ResponseInterface;
  $data['user_school'] = '美团';
 
 $context = ContextInterface::getContext();
+//var_dump($context);die;
 ResponseInterface::success($context,$data);
 
 

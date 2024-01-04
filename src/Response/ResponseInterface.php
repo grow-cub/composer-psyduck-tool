@@ -51,6 +51,9 @@ class ResponseInterface
             $obj['data'] = $data;
             $obj = self::snakeToHump($obj);
         }
+        // 保存请求体
+        MonitorInterface::saveContext($context);
+        // 是否开启加密返回
         $obj = self::isCiphertext($obj);
         return self::responseJson($context,$obj);
     }
