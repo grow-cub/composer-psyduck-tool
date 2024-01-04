@@ -6,6 +6,7 @@
 namespace Psyduck\Encrypt;
 
 use Psyduck\Constant\ConstantInterface;
+use Psyduck\Encrypt\Rsa\RsaInterface;
 
 class DispatchInterface{
 
@@ -98,5 +99,45 @@ class DispatchInterface{
             }
         }
         return $tmp;
+    }
+
+    /**
+     * rsa私钥加密
+     * @param string $data
+     * @return string|null
+     */
+    public static function rsaPrivateEncrypt(string $data = ''){
+        return RsaInterface::privateEncrypt($data);
+    }
+
+    /**
+     * rsa公钥解密
+     * @param string $data
+     * @return null
+     */
+    public static function rsaPublicDecrypt(string $data = ''){
+        return RsaInterface::publicDecrypt($data);
+    }
+
+    /**
+     * rsa公钥加密
+     * @param string $data
+     * @return string|null
+     */
+    public static function rsaPublicEncrypt(string $data = ''){
+        return RsaInterface::publicEncrypt($data);
+    }
+
+    /**
+     * rsa私钥解密
+     * @param string $data
+     * @return null
+     */
+    public static function rsaPrivateDecrypt(string $data = ''){
+        return RsaInterface::privateDecrypt($data);
+    }
+
+    public static function aes(){
+
     }
 }

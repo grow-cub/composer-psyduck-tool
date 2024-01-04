@@ -3,14 +3,17 @@
 
 require_once "../vendor/autoload.php";
 
+use Psyduck\Encrypt\DispatchInterface;
 
-use Psyduck\AntiShake\AntiShakeInterface;
+DispatchInterface::rsa();
 
-$redis = new Redis();
-$redis->connect('127.0.0.1', 6379);
-
-AntiShakeInterface::AntiShakeRedis($redis);
-die;
+//use Psyduck\AntiShake\AntiShakeInterface;
+//
+//$redis = new Redis();
+//$redis->connect('127.0.0.1', 6379);
+//
+//AntiShakeInterface::AntiShakeRedis($redis);
+//die;
 
 
 //use Psyduck\Context\ContextInterface;
