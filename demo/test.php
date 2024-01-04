@@ -4,21 +4,30 @@
 require_once "../vendor/autoload.php";
 
 
-use Psyduck\Context\ContextInterface;
-use Psyduck\Constant\Constant;
-use Psyduck\Monitor\MonitorInterface;
-use Psyduck\Response\ResponseInterface;
+use Psyduck\AntiShake\AntiShakeInterface;
+
+$redis = new Redis();
+$redis->connect('127.0.0.1', 6379);
+
+AntiShakeInterface::AntiShakeRedis($redis);
+die;
 
 
- $data = array();
- $data['user_name'] = '1';
- $data['user_age'] = '18';
- $data['user_school'] = '美团';
-
-$context = ContextInterface::getContext();
-//var_dump($context);die;
-ResponseInterface::success($context,$data);
+//use Psyduck\Context\ContextInterface;
+//use Psyduck\Constant\Constant;
+//use Psyduck\Monitor\MonitorInterface;
+//use Psyduck\Response\ResponseInterface;
+//
+//
+// $data = array();
+// $data['user_name'] = '1';
+// $data['user_age'] = '18';
+// $data['user_school'] = '美团';
+//
+//$context = ContextInterface::getContext();
+////var_dump($context);die;
 //ResponseInterface::success($context,$data);
+////ResponseInterface::success($context,$data);
 
 
 

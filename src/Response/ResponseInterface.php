@@ -2,8 +2,8 @@
 
 namespace Psyduck\Response;
 
+use Psyduck\Constant\ConstantInterface;
 use Psyduck\Context\ContextInterface;
-use Psyduck\Constant\Constant;
 use Psyduck\Hump\HumpInterface;
 use Psyduck\Monitor\MonitorInterface;
 use Psyduck\Pako\PakoInterface;
@@ -14,7 +14,7 @@ class ResponseInterface
      * 成功响应
      * @param ContextInterface $context
      * @param $data
-     * @return array|string|void
+     * @return void
      */
     public static function success(ContextInterface $context,$data = null)
     {
@@ -25,7 +25,7 @@ class ResponseInterface
      * 错误返回
      * @param ContextInterface $context
      * @param $errorMsg
-     * @return array|string|void
+     * @return void
      */
     public static function error(ContextInterface $context,$errorMsg = null)
     {
@@ -53,7 +53,7 @@ class ResponseInterface
         }
         MonitorInterface::onEnd($context);
         // 是否开启加密返回
-        echo Constant::$isCiphertext ? PakoInterface::encrypt($obj) : json_encode($obj);
+        echo ConstantInterface::$isCiphertext ? PakoInterface::encrypt($obj) : json_encode($obj);
         exit;
     }
 }

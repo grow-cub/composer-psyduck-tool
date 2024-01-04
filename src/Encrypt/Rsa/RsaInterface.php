@@ -1,6 +1,6 @@
 <?php
 
-namespace Psyduck\Rsa;
+namespace Psyduck\Encrypt\Rsa;
 
 /**
  * openssl_get_privatekey 或者 openssl_pkey_get_private 校验私钥

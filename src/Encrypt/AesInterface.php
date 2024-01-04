@@ -1,6 +1,6 @@
 <?php
 
-namespace Psyduck\Aes;
+namespace Psyduck\Encrypt;
 
 /**
  * AES有很多种加密方式如ECB、CBC、CTR、OFB、CFB
